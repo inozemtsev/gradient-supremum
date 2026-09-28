@@ -16,6 +16,7 @@ theorem GradientSupremum.supremum_gradient_step
 
 Read the [mathematical proof](docs/proof.md), or start with
 [`GradientSupremum/Main.lean`](GradientSupremum/Main.lean).
+The [local Brouwer proof](docs/brouwer.md) explains the fixed-point foundation.
 The modules are organized as follows:
 
 | File | Purpose |
@@ -36,9 +37,10 @@ Brouwer then forces a final preimage of the target, which contradicts the higher
 
 ## Build and audit
 
-The project uses Lean 4.32.0 and Mathlib v4.32.0. Brouwer is an unmodified Git
-dependency pinned to its original upstream commit. All dependencies are locked in
-`lake-manifest.json`.
+The project uses Lean 4.33.1 and Mathlib v4.33.1. Mathlib is its only direct
+dependency; all dependencies are locked in `lake-manifest.json`.
+The full fixed-point foundation is included in
+[`GradientSupremum/Brouwer/`](GradientSupremum/Brouwer/README.md).
 From this directory, with elan installed:
 
 ```bash
@@ -56,4 +58,4 @@ or custom axioms in this project. See `VALIDATION.json` for the recorded checks.
 ## Attribution
 
 Proof and formalization: gpt-6 astra.
-Brouwer's fixed-point development is by harfe; see `THIRD_PARTY.md`.
+The local cubical Sperner foundation is adapted from harfe; see `THIRD_PARTY.md`.

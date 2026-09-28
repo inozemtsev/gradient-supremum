@@ -3,12 +3,14 @@ Copyright (c) 2026 Igor Inozemtsev. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Igor Inozemtsev
 -/
-import Mathlib.Analysis.Normed.Module.Basic
+module
 
-import Mathlib.Tactic.Abel
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Ring
+public import Mathlib.Analysis.Normed.Module.Basic
+
+public import Mathlib.Tactic.Abel
+public import Mathlib.Tactic.Linarith
+public import Mathlib.Tactic.NormNum
+public import Mathlib.Tactic.Ring
 
 /-!
 # Finite Euler walks
@@ -17,6 +19,8 @@ import Mathlib.Tactic.Ring
 The center $y$ is retained throughout the iteration; it is not updated to the current point.
 These elementary continuity and displacement lemmas need no finite-dimensional assumption.
 -/
+
+@[expose] public section
 
 open Set Metric
 open scoped Topology

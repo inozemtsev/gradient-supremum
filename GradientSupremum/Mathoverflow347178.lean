@@ -3,8 +3,10 @@ Copyright (c) 2026 Igor Inozemtsev. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Igor Inozemtsev
 -/
-import GradientSupremum.Main
-import Mathlib.Analysis.InnerProductSpace.PiL2
+module
+
+public import GradientSupremum.Main
+public import Mathlib.Analysis.InnerProductSpace.PiL2
 
 /-!
 # MathOverflow 347178: the bounded-only variant
@@ -16,6 +18,8 @@ finite dimensions, including zero and one.
 
 Reference: https://mathoverflow.net/questions/347178
 -/
+
+@[expose] public section
 
 open Set
 

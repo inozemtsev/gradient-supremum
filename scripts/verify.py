@@ -14,7 +14,10 @@ ROOT = Path(__file__).resolve().parents[1]
 LAKE = shutil.which("lake") or str(Path.home() / ".elan/bin/lake")
 ENV = dict(os.environ, LEAN_NUM_THREADS="2")
 EXPECTED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
-THEOREMS = ["GradientSupremum.supremum_gradient_step",
+THEOREMS = ["GradientSupremum.Brouwer.Cubical.weaker_cubical_sperner",
+            "GradientSupremum.Brouwer.exists_fixedPoint_cube",
+            "GradientSupremum.Brouwer.exists_fixedPoint_closedBall",
+            "GradientSupremum.supremum_gradient_step",
             "Mathoverflow347178.bounded_only", "Mathoverflow347178.bounded_only_strong"]
 
 
@@ -45,7 +48,7 @@ def main():
         axioms[name] = sorted(x.strip() for x in match.group(1).split(",")) if match else []
     sources = [ROOT / "GradientSupremum.lean"]
     for directory in ["GradientSupremum", "scripts"]:
-        sources.extend(sorted((ROOT / directory).glob("*.lean")))
+        sources.extend(sorted((ROOT / directory).rglob("*.lean")))
     hashes = {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
               for p in sources}
     manifest = json.loads((ROOT / "lake-manifest.json").read_text())

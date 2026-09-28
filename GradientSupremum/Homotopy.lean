@@ -3,7 +3,9 @@ Copyright (c) 2026 Igor Inozemtsev. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Igor Inozemtsev
 -/
-import FixedPointTheorems.brouwer
+module
+
+public import GradientSupremum.Brouwer.ClosedBall
 
 /-!
 # A topological obstruction to raising all low values
@@ -12,9 +14,10 @@ Brouwer implies that a homotopy from the identity cannot lose a target without c
 boundary of a ball. A quadratic value-gain estimate excludes that crossing. The result
 `no_raising_homotopy` is the topological step used in the proof of the supremum equality.
 
-The imported Brouwer theorem is proved in harfe's MIT-licensed cubical Sperner development.
-See `THIRD_PARTY.md` for the upstream dependency and its license.
+The fixed-point theorem and its combinatorial foundation are local modules under `Brouwer/`.
 -/
+
+@[expose] public section
 
 open Set Metric
 open scoped Topology
@@ -37,9 +40,7 @@ theorem no_unit_sphere_retraction
   -- Brouwer applied to the antipode of a putative retraction gives a contradiction.
   let F : C(closedBall (0 : E) 1, closedBall (0 : E) 1) :=
     ⟨fun x ↦ ⟨-r x, hm x⟩, hc.neg.subtype_mk hm⟩
-  obtain ⟨x, hx⟩ := brouwer_fixed_point (closedBall (0 : E) 1)
-    (convex_closedBall 0 1) (isCompact_closedBall 0 1)
-    ⟨0, mem_closedBall_self zero_le_one⟩ F
+  obtain ⟨x, hx⟩ := Brouwer.exists_fixedPoint_closedBall F
   have heq : -r x = (x : E) := congrArg Subtype.val hx
   have hxnorm : ‖(x : E)‖ = 1 := by rw [← heq, norm_neg, hn]
   have hneg : -(x : E) = (x : E) := by simpa [hfix x hxnorm] using heq

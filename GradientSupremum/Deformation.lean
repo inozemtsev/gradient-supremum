@@ -3,11 +3,13 @@ Copyright (c) 2026 Igor Inozemtsev. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Igor Inozemtsev
 -/
-import GradientSupremum.Ascent
-import GradientSupremum.Iteration
+module
 
-import Mathlib.Tactic.FunProp
-import Mathlib.Tactic.Positivity
+public import GradientSupremum.Ascent
+public import GradientSupremum.Iteration
+
+public import Mathlib.Tactic.FunProp
+public import Mathlib.Tactic.Positivity
 
 /-!
 # Raising low values by finitely many continuous steps
@@ -20,6 +22,8 @@ Euler steps, not an ODE flow, so continuity of the gradient is enough.
 The proof of `exists_raising_homotopy` first chooses a uniform separation constant, then a
 compact-ball step size, and finally iterates with a center-dependent step length.
 -/
+
+@[expose] public section
 
 open Set Metric
 open scoped Topology RealInnerProductSpace

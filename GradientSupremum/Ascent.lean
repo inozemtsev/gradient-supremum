@@ -3,17 +3,19 @@ Copyright (c) 2026 Igor Inozemtsev. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Igor Inozemtsev
 -/
-import Mathlib.Analysis.Calculus.Deriv.MeanValue
-import Mathlib.Analysis.Calculus.Gradient.Basic
-import Mathlib.Analysis.InnerProductSpace.Calculus
-import Mathlib.Topology.MetricSpace.HausdorffDistance
-import Mathlib.Topology.UniformSpace.HeineCantor
+module
 
-import Mathlib.Tactic.Abel
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Ring
+public import Mathlib.Analysis.Calculus.Deriv.MeanValue
+public import Mathlib.Analysis.Calculus.Gradient.Basic
+public import Mathlib.Analysis.InnerProductSpace.Calculus
+public import Mathlib.Topology.MetricSpace.HausdorffDistance
+public import Mathlib.Topology.UniformSpace.HeineCantor
+
+public import Mathlib.Tactic.Abel
+public import Mathlib.Tactic.FieldSimp
+public import Mathlib.Tactic.Linarith
+public import Mathlib.Tactic.NormNum
+public import Mathlib.Tactic.Ring
 
 /-!
 # Uniform finite-step ascent
@@ -26,6 +28,8 @@ most one. Uniform continuity on a compact ball then gives a common positive step
 The main results are `exists_uniform_image_separation` and `exists_uniform_ascent_step`.
 No global modulus of continuity or bound on the Hessian is needed.
 -/
+
+@[expose] public section
 
 open Set Metric
 open scoped Topology RealInnerProductSpace

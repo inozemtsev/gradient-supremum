@@ -1,4 +1,6 @@
-import GradientSupremum
+module
+public import GradientSupremum
+@[expose] public section
 
 open Set
 
@@ -28,3 +30,23 @@ example (n : ℕ) :
   refine ⟨0, ?_⟩
   rintro z ⟨x, rfl⟩
   exact neg_nonpos.mpr (sq_nonneg ‖x‖)
+
+-- The local topological foundation works in all finite dimensions.
+example (n : ℕ)
+    (f : C(GradientSupremum.Brouwer.Cube n, GradientSupremum.Brouwer.Cube n)) :
+    ∃ x, f x = x :=
+  GradientSupremum.Brouwer.exists_fixedPoint_cube f
+
+example (f : C(Metric.closedBall (0 : EuclideanSpace ℝ (Fin 0)) 1,
+    Metric.closedBall (0 : EuclideanSpace ℝ (Fin 0)) 1)) : ∃ x, f x = x :=
+  GradientSupremum.Brouwer.exists_fixedPoint_closedBall f
+
+example (f : C(Metric.closedBall (0 : ℝ) 1, Metric.closedBall (0 : ℝ) 1)) :
+    ∃ x, f x = x :=
+  GradientSupremum.Brouwer.exists_fixedPoint_closedBall f
+
+-- Projection really fixes every input already in the ball.
+example {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (x : E) (hx : ‖x‖ ≤ 1) : GradientSupremum.Brouwer.radialProjection x = x := by
+  apply GradientSupremum.Brouwer.radialProjection_eq_self
+  simpa only [Metric.mem_closedBall, dist_zero_right] using hx
