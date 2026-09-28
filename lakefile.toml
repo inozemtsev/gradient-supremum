@@ -1,0 +1,19 @@
+name = "gradient_supremum"
+version = "0.1.0"
+defaultTargets = ["GradientSupremum"]
+
+[leanOptions]
+autoImplicit = false
+relaxedAutoImplicit = false
+pp.unicode.fun = true
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.33.1"
+
+[[lean_lib]]
+name = "FixedPointTheorems"
+
+[[lean_lib]]
+name = "GradientSupremum"

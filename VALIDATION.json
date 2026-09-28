@@ -1,0 +1,74 @@
+{
+  "passed": true,
+  "toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_revision": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "axioms": {
+    "GradientSupremum.supremum_gradient_step": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Mathoverflow347178.bounded_only": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Mathoverflow347178.bounded_only_strong": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "source_sha256": {
+    "GradientSupremum.lean": "68232e4b38da6f4ce96e07542f7c13e6333abbb4646eddf37f30992e3ff5c2e3",
+    "GradientSupremum/Ascent.lean": "1bc21ebc64840fb6b1898df362d57eaaf7fe1bec7264f6d1297db59762630ea4",
+    "GradientSupremum/Deformation.lean": "829ccb48a987e97e6eb4e02606d23cdd56f12bc800e87e593ca276e54a7391cf",
+    "GradientSupremum/Homotopy.lean": "1c9b24ca6c93b80ed73680567766f256a7e393edcc4f5c169741016cf2c0480c",
+    "GradientSupremum/Iteration.lean": "dd5e4b3f7289f4398bb4d0b18fa1d4eaba3d2d99e79de6ac7f85a9e05721ea88",
+    "GradientSupremum/Main.lean": "e5b62a5dfdf0dfd45cc887963b2bc34eca88f779fa011f15f409d40ea9ab7998",
+    "GradientSupremum/Mathoverflow347178.lean": "fcebc6b6250c7d0c3368f7a934273bd06430cb6a670014bf7d4c802ff3e7046f",
+    "FixedPointTheorems/apply_cubical_sperner.lean": "6f5b21754b51f8b5b8cf7ef5a488f6b45284650e8c598df800da92c78fb8b8e6",
+    "FixedPointTheorems/brouwer.lean": "370ddcb8efdb33e1dc903a155f1a6b0b2318bc35ff28ababb1e60d4968f919a3",
+    "FixedPointTheorems/convex_homeos.lean": "fcea1b2c35b330daea5f54f55d8ee859be6291e03eccd776a25c39a47183cee9",
+    "FixedPointTheorems/cubical_sperner.lean": "efd5d877b1e65c1bf4901d8b141f6b256d04642666c353354293ebb153d0d163",
+    "FixedPointTheorems/cubical_sperner_prep.lean": "2dd1946936d64b040394766fe7cfa3fedbb498ce7c20bca792d95c7c139ea2df",
+    "scripts/AxiomAudit.lean": "66504d716a29b88c9e14b9aff760545423f6eda37498932c081cccd8748cb82b",
+    "scripts/StatementTests.lean": "9752ce4c989e346aec9da05e4f221cb8ab2f94f36fa09927445d0b3c7934a391"
+  },
+  "checks": [
+    {
+      "command": [
+        "lake",
+        "--wfail",
+        "build"
+      ],
+      "exit_code": 0,
+      "seconds": 28.809,
+      "output": "✔ [2463/2481] Built GradientSupremum.Iteration (1.9s)\n✔ [3066/3132] Built GradientSupremum.Ascent (3.2s)\n✔ [3164/3176] Built FixedPointTheorems.cubical_sperner_prep (4.7s)\n✔ [3166/3176] Built GradientSupremum.Deformation (5.2s)\n✔ [3168/3176] Built FixedPointTheorems.cubical_sperner (3.1s)\n✔ [3169/3176] Built FixedPointTheorems.convex_homeos (2.9s)\n✔ [3170/3176] Built FixedPointTheorems.apply_cubical_sperner (2.3s)\n✔ [3171/3176] Built FixedPointTheorems.brouwer (2.0s)\n✔ [3172/3176] Built GradientSupremum.Homotopy (2.6s)\n✔ [3173/3176] Built GradientSupremum.Main (2.1s)\n✔ [3174/3176] Built GradientSupremum.Mathoverflow347178 (1.8s)\n✔ [3175/3176] Built GradientSupremum (1.6s)\nBuild completed successfully (3176 jobs).\n"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-j2",
+        "scripts/AxiomAudit.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 4.58,
+      "output": "'GradientSupremum.supremum_gradient_step' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Mathoverflow347178.bounded_only' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Mathoverflow347178.bounded_only_strong' depends on axioms: [propext, Classical.choice, Quot.sound]\nMathoverflow347178.bounded_only (n : ℕ) :\n  n ≥ 2 →\n    ∀ (f : EuclideanSpace ℝ (Fin n) → ℝ),\n      ContDiff ℝ 1 f →\n        BddAbove (Set.range f) →\n          BddAbove (Set.range fun x => f (x + gradient f x)) → ⨆ x, f x = ⨆ x, f (x + gradient f x)\n"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-j2",
+        "scripts/StatementTests.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 3.193,
+      "output": ""
+    }
+  ]
+}
