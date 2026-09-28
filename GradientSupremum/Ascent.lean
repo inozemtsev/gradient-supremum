@@ -3,13 +3,11 @@ Copyright (c) 2026 Igor Inozemtsev. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Igor Inozemtsev
 -/
-module
-
-public import Mathlib.Analysis.Calculus.Deriv.MeanValue
-public import Mathlib.Analysis.Calculus.Gradient.Basic
-public import Mathlib.Analysis.InnerProductSpace.Calculus
-public import Mathlib.Topology.MetricSpace.HausdorffDistance
-public import Mathlib.Topology.UniformSpace.HeineCantor
+import Mathlib.Analysis.Calculus.Deriv.MeanValue
+import Mathlib.Analysis.Calculus.Gradient.Basic
+import Mathlib.Analysis.InnerProductSpace.Calculus
+import Mathlib.Topology.MetricSpace.HausdorffDistance
+import Mathlib.Topology.UniformSpace.HeineCantor
 
 import Mathlib.Tactic.Abel
 import Mathlib.Tactic.FieldSimp
@@ -28,8 +26,6 @@ most one. Uniform continuity on a compact ball then gives a common positive step
 The main results are `exists_uniform_image_separation` and `exists_uniform_ascent_step`.
 No global modulus of continuity or bound on the Hessian is needed.
 -/
-
-@[expose] public section
 
 open Set Metric
 open scoped Topology RealInnerProductSpace

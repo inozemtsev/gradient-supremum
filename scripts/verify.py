@@ -44,20 +44,30 @@ def main():
                           r"\s*\[([^\]]*)\]", audit)
         axioms[name] = sorted(x.strip() for x in match.group(1).split(",")) if match else []
     sources = [ROOT / "GradientSupremum.lean"]
-    for directory in ["GradientSupremum", "FixedPointTheorems", "scripts"]:
+    for directory in ["GradientSupremum", "scripts"]:
         sources.extend(sorted((ROOT / directory).glob("*.lean")))
     hashes = {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
               for p in sources}
     manifest = json.loads((ROOT / "lake-manifest.json").read_text())
-    revision = next(p["rev"] for p in manifest["packages"] if p["name"] == "mathlib")
-    actual = subprocess.check_output(["git", "-C", str(ROOT / ".lake/packages/mathlib"),
-                                      "rev-parse", "HEAD"], text=True).strip()
+    dependencies = {}
+    for package in manifest["packages"]:
+        name = package["name"].removeprefix("«").removesuffix("»")
+        directory = ROOT / manifest["packagesDir"] / name
+        revision = subprocess.check_output(
+            ["git", "-C", str(directory), "rev-parse", "HEAD"], text=True).strip()
+        clean = subprocess.run(
+            ["git", "-C", str(directory), "diff", "--quiet", "HEAD", "--"],
+            check=False).returncode == 0
+        dependencies[name] = {"revision": revision, "expected_revision": package["rev"],
+                              "tracked_files_unchanged": clean}
+    actual = dependencies["mathlib"]["revision"]
     passed = (all(c["exit_code"] == 0 and "warning:" not in c["output"] for c in checks)
               and all(set(axioms[name]) == EXPECTED_AXIOMS for name in THEOREMS)
-              and actual == revision)
+              and all(d["revision"] == d["expected_revision"] and d["tracked_files_unchanged"]
+                      for d in dependencies.values()))
     receipt = {"passed": passed, "toolchain": (ROOT / "lean-toolchain").read_text().strip(),
                "mathlib_revision": actual, "axioms": axioms, "source_sha256": hashes,
-               "checks": checks}
+               "checks": checks, "dependencies": dependencies}
     (ROOT / "VALIDATION.json").write_text(json.dumps(receipt, ensure_ascii=False, indent=2) + "\n")
     print(json.dumps({"passed": passed, "mathlib_revision": actual, "axioms": axioms}, indent=2))
     return 0 if passed else 1

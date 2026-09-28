@@ -3,10 +3,8 @@ Copyright (c) 2026 Igor Inozemtsev. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Igor Inozemtsev
 -/
-module
-
-public import GradientSupremum.Deformation
-public import GradientSupremum.Homotopy
+import GradientSupremum.Deformation
+import GradientSupremum.Homotopy
 
 /-!
 # Supremum preservation by a unit gradient step
@@ -20,8 +18,6 @@ to an upper bound on all values of $f$. This gives equality of the two real supr
 
 Reference: https://mathoverflow.net/questions/347178
 -/
-
-@[expose] public section
 
 open Set Metric
 open scoped Topology RealInnerProductSpace

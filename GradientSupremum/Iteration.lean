@@ -3,9 +3,7 @@ Copyright (c) 2026 Igor Inozemtsev. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Igor Inozemtsev
 -/
-module
-
-public import Mathlib.Analysis.Normed.Module.Basic
+import Mathlib.Analysis.Normed.Module.Basic
 
 import Mathlib.Tactic.Abel
 import Mathlib.Tactic.Linarith
@@ -19,8 +17,6 @@ import Mathlib.Tactic.Ring
 The center $y$ is retained throughout the iteration; it is not updated to the current point.
 These elementary continuity and displacement lemmas need no finite-dimensional assumption.
 -/
-
-@[expose] public section
 
 open Set Metric
 open scoped Topology

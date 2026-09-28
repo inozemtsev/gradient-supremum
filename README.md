@@ -36,7 +36,9 @@ Brouwer then forces a final preimage of the target, which contradicts the higher
 
 ## Build and audit
 
-The project pins Lean 4.33.1 and Mathlib through `lake-manifest.json`.
+The project uses Lean 4.32.0 and Mathlib v4.32.0. Brouwer is an unmodified Git
+dependency pinned to its original upstream commit. All dependencies are locked in
+`lake-manifest.json`.
 From this directory, with elan installed:
 
 ```bash

@@ -1,7 +1,7 @@
 {
   "passed": true,
-  "toolchain": "leanprover/lean4:v4.33.1",
-  "mathlib_revision": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "toolchain": "leanprover/lean4:v4.32.0",
+  "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
   "axioms": {
     "GradientSupremum.supremum_gradient_step": [
       "Classical.choice",
@@ -20,18 +20,13 @@
     ]
   },
   "source_sha256": {
-    "GradientSupremum.lean": "68232e4b38da6f4ce96e07542f7c13e6333abbb4646eddf37f30992e3ff5c2e3",
-    "GradientSupremum/Ascent.lean": "1bc21ebc64840fb6b1898df362d57eaaf7fe1bec7264f6d1297db59762630ea4",
-    "GradientSupremum/Deformation.lean": "829ccb48a987e97e6eb4e02606d23cdd56f12bc800e87e593ca276e54a7391cf",
-    "GradientSupremum/Homotopy.lean": "1c9b24ca6c93b80ed73680567766f256a7e393edcc4f5c169741016cf2c0480c",
-    "GradientSupremum/Iteration.lean": "dd5e4b3f7289f4398bb4d0b18fa1d4eaba3d2d99e79de6ac7f85a9e05721ea88",
-    "GradientSupremum/Main.lean": "e5b62a5dfdf0dfd45cc887963b2bc34eca88f779fa011f15f409d40ea9ab7998",
-    "GradientSupremum/Mathoverflow347178.lean": "fcebc6b6250c7d0c3368f7a934273bd06430cb6a670014bf7d4c802ff3e7046f",
-    "FixedPointTheorems/apply_cubical_sperner.lean": "6f5b21754b51f8b5b8cf7ef5a488f6b45284650e8c598df800da92c78fb8b8e6",
-    "FixedPointTheorems/brouwer.lean": "370ddcb8efdb33e1dc903a155f1a6b0b2318bc35ff28ababb1e60d4968f919a3",
-    "FixedPointTheorems/convex_homeos.lean": "fcea1b2c35b330daea5f54f55d8ee859be6291e03eccd776a25c39a47183cee9",
-    "FixedPointTheorems/cubical_sperner.lean": "efd5d877b1e65c1bf4901d8b141f6b256d04642666c353354293ebb153d0d163",
-    "FixedPointTheorems/cubical_sperner_prep.lean": "2dd1946936d64b040394766fe7cfa3fedbb498ce7c20bca792d95c7c139ea2df",
+    "GradientSupremum.lean": "1af61ec7444e01987a306bab90c56f8dabde85c150eedaac23cc3be5f856b8b2",
+    "GradientSupremum/Ascent.lean": "d8a7923a0fee0107915332171dc27cf3602490ea49ef243ad4af4606bb84bce8",
+    "GradientSupremum/Deformation.lean": "1ec67a3540c2d5e8844eea118b7b3fee70b029fc749268263fe29e6343ecfc0f",
+    "GradientSupremum/Homotopy.lean": "9786f2171ed9097c27ec7946f5823cc6449a79a017fe045232b077f13fddf606",
+    "GradientSupremum/Iteration.lean": "112c8caca8d465c78e167e92307af9b7c9d45a6f0268467e1edbd6705ec5e4e4",
+    "GradientSupremum/Main.lean": "7ce14d0d351bf8e3c1eea199fe55d210596ef4da2f4e548a68e90b0a28c69549",
+    "GradientSupremum/Mathoverflow347178.lean": "b51998f50e601fcde4642591a5f6de073cb9ab027e35d6949d9d13fce75d5d45",
     "scripts/AxiomAudit.lean": "66504d716a29b88c9e14b9aff760545423f6eda37498932c081cccd8748cb82b",
     "scripts/StatementTests.lean": "9752ce4c989e346aec9da05e4f221cb8ab2f94f36fa09927445d0b3c7934a391"
   },
@@ -43,8 +38,8 @@
         "build"
       ],
       "exit_code": 0,
-      "seconds": 28.809,
-      "output": "✔ [2463/2481] Built GradientSupremum.Iteration (1.9s)\n✔ [3066/3132] Built GradientSupremum.Ascent (3.2s)\n✔ [3164/3176] Built FixedPointTheorems.cubical_sperner_prep (4.7s)\n✔ [3166/3176] Built GradientSupremum.Deformation (5.2s)\n✔ [3168/3176] Built FixedPointTheorems.cubical_sperner (3.1s)\n✔ [3169/3176] Built FixedPointTheorems.convex_homeos (2.9s)\n✔ [3170/3176] Built FixedPointTheorems.apply_cubical_sperner (2.3s)\n✔ [3171/3176] Built FixedPointTheorems.brouwer (2.0s)\n✔ [3172/3176] Built GradientSupremum.Homotopy (2.6s)\n✔ [3173/3176] Built GradientSupremum.Main (2.1s)\n✔ [3174/3176] Built GradientSupremum.Mathoverflow347178 (1.8s)\n✔ [3175/3176] Built GradientSupremum (1.6s)\nBuild completed successfully (3176 jobs).\n"
+      "seconds": 4.352,
+      "output": "Build completed successfully (3168 jobs).\n"
     },
     {
       "command": [
@@ -55,7 +50,7 @@
         "scripts/AxiomAudit.lean"
       ],
       "exit_code": 0,
-      "seconds": 4.58,
+      "seconds": 2.935,
       "output": "'GradientSupremum.supremum_gradient_step' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Mathoverflow347178.bounded_only' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Mathoverflow347178.bounded_only_strong' depends on axioms: [propext, Classical.choice, Quot.sound]\nMathoverflow347178.bounded_only (n : ℕ) :\n  n ≥ 2 →\n    ∀ (f : EuclideanSpace ℝ (Fin n) → ℝ),\n      ContDiff ℝ 1 f →\n        BddAbove (Set.range f) →\n          BddAbove (Set.range fun x => f (x + gradient f x)) → ⨆ x, f x = ⨆ x, f (x + gradient f x)\n"
     },
     {
@@ -67,8 +62,60 @@
         "scripts/StatementTests.lean"
       ],
       "exit_code": 0,
-      "seconds": 3.193,
+      "seconds": 3.211,
       "output": ""
     }
-  ]
+  ],
+  "dependencies": {
+    "fixed-point-theorems": {
+      "revision": "770940ddf9878cf61952ed53d910b92bca841838",
+      "expected_revision": "770940ddf9878cf61952ed53d910b92bca841838",
+      "tracked_files_unchanged": true
+    },
+    "mathlib": {
+      "revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+      "expected_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+      "tracked_files_unchanged": true
+    },
+    "plausible": {
+      "revision": "e12c1910fe855cbfc38803cd4e55543906d5fa62",
+      "expected_revision": "e12c1910fe855cbfc38803cd4e55543906d5fa62",
+      "tracked_files_unchanged": true
+    },
+    "LeanSearchClient": {
+      "revision": "c5d5b8fe6e5158def25cd28eb94e4141ad97c843",
+      "expected_revision": "c5d5b8fe6e5158def25cd28eb94e4141ad97c843",
+      "tracked_files_unchanged": true
+    },
+    "importGraph": {
+      "revision": "7e9612bf0b9ee66db3cb5b9988a35afc706f5a12",
+      "expected_revision": "7e9612bf0b9ee66db3cb5b9988a35afc706f5a12",
+      "tracked_files_unchanged": true
+    },
+    "proofwidgets": {
+      "revision": "6e311e2a844da9b2cc3971187df2fe0066947b93",
+      "expected_revision": "6e311e2a844da9b2cc3971187df2fe0066947b93",
+      "tracked_files_unchanged": true
+    },
+    "aesop": {
+      "revision": "a7dbf0c63b694e47f425f3dcddbc0e178bb432d3",
+      "expected_revision": "a7dbf0c63b694e47f425f3dcddbc0e178bb432d3",
+      "tracked_files_unchanged": true
+    },
+    "Qq": {
+      "revision": "38d591e778f100aec9762bb582f9c7f55f50e9dc",
+      "expected_revision": "38d591e778f100aec9762bb582f9c7f55f50e9dc",
+      "tracked_files_unchanged": true
+    },
+    "batteries": {
+      "revision": "023ce7d62a0531e22a5331e20b587817a80d49ff",
+      "expected_revision": "023ce7d62a0531e22a5331e20b587817a80d49ff",
+      "tracked_files_unchanged": true
+    },
+    "Cli": {
+      "revision": "88679d088c9720c27ebdf2ba4dafe17341747f94",
+      "expected_revision": "88679d088c9720c27ebdf2ba4dafe17341747f94",
+      "tracked_files_unchanged": true
+    }
+  }
 }

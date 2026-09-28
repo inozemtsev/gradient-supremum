@@ -10,10 +10,12 @@ pp.unicode.fun = true
 [[require]]
 name = "mathlib"
 scope = "leanprover-community"
-rev = "v4.33.1"
+rev = "v4.32.0"
 
-[[lean_lib]]
-name = "FixedPointTheorems"
+[[require]]
+name = "fixed-point-theorems"
+git = "https://github.com/harfe/fixed-point-theorems-lean4"
+rev = "770940ddf9878cf61952ed53d910b92bca841838"
 
 [[lean_lib]]
 name = "GradientSupremum"

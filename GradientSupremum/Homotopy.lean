@@ -3,9 +3,7 @@ Copyright (c) 2026 Igor Inozemtsev. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Igor Inozemtsev
 -/
-module
-
-public import FixedPointTheorems.brouwer
+import FixedPointTheorems.brouwer
 
 /-!
 # A topological obstruction to raising all low values
@@ -15,10 +13,8 @@ boundary of a ball. A quadratic value-gain estimate excludes that crossing. The 
 `no_raising_homotopy` is the topological step used in the proof of the supremum equality.
 
 The imported Brouwer theorem is proved in harfe's MIT-licensed cubical Sperner development.
-See `FixedPointTheorems/LICENSE` and the pinned source information in `THIRD_PARTY.md`.
+See `THIRD_PARTY.md` for the upstream dependency and its license.
 -/
-
-@[expose] public section
 
 open Set Metric
 open scoped Topology

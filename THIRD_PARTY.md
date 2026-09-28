@@ -1,21 +1,17 @@
 # Third-party proof dependency
 
-The five Lean files under `FixedPointTheorems/` come from
+Brouwer's fixed-point theorem is imported from
 [harfe/fixed-point-theorems-lean4](https://github.com/harfe/fixed-point-theorems-lean4)
 at commit `770940ddf9878cf61952ed53d910b92bca841838`.
-They prove Brouwer's fixed-point theorem from a cubical Sperner argument.
-The original MIT license is retained as `FixedPointTheorems/LICENSE`.
+The library proves it from a cubical Sperner argument and is licensed under
+[MIT](https://github.com/harfe/fixed-point-theorems-lean4/blob/770940ddf9878cf61952ed53d910b92bca841838/LICENSE).
 
-The local port to Lean 4.33.1 makes these compatibility changes:
+Lake fetches the original library as a Git dependency. Its source is not copied
+into this repository or modified during the build. The project uses Lean 4.32.0
+and Mathlib v4.32.0, matching the library's own configuration.
 
-- Add module declarations and public imports/exports required by the module system.
-- Mark two counting definitions noncomputable and make classical decidability explicit.
-- Replace deprecated set lemmas and an unnecessary `haveI`.
-- Make the dimension and finite-set equality explicit in the induction step.
+`lakefile.toml` pins the library's commit; `lake-manifest.json` locks all transitive
+dependencies. `scripts/verify.py` checks the dependency revisions, confirms that
+their tracked files are unchanged, and audits the final theorem's transitive axioms.
 
-`FixedPointTheorems/lean-4.33.1.patch` records every change against that commit.
-`VENDOR_MANIFEST.json` records the original and ported file hashes.
-No theorem hypothesis or conclusion is weakened. The final theorem's transitive
-axioms are checked in `scripts/AxiomAudit.lean`; Brouwer is not a custom axiom.
-
-The rest of the proof project is licensed under Apache 2.0; see the root `LICENSE`.
+The proof and code in this repository are licensed under Apache 2.0; see `LICENSE`.
